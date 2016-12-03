@@ -1,0 +1,161 @@
+const code1 = 'DLRRRRLRLDRRRURRURULRLLULUURRRDDLDULDULLUUDLURLURLLDLUUUDUUUULDRDUUDUDDRRLRDDDUDLDLLRUURDRULUULRLRDULULLRLRLRLDRLUULDLDDDDRRLRUUUDDRURRULLLRURLUURULLRLUDDLDRUULDRURULRRRLLLRDLULDRRDDUDLURURLDULDRDRLDDUURRDUDDRDUURDULDUURDUDRDRULDUDUULRRULUUURDUURUDLDURDLRLURUUDRRDLRUDRULRURLDLLDLLRRDRDRLRRRULDRRLDUURLUUDLUUDDLLRULRDUUDURURLUURDRRRUDLRDULRRRLDRDULRUUDDDLRDUULDRLLDRULUULULRDRUUUULULLRLLLRUURUULRRLDDDRULRRRUDURUR'
+
+const code2 = 'RULRUUUDLLUDURDRDDLLRLLUDRUDDRLRRDLDLDRDULDLULURDLUDDDUULURLDRUUURURLLRRDDDUUDRLRLLDLDRDDDRDUDLRDRDLLLDDLDUDDRUDUUDLLLLLDULRLURRRLLURUUULUDRLRLRLURRDRLLLRLLULRLLLDDLRLRDLUUUUUDULULDDULLUDUURDLRUDLRUDLRLLRLDLULRLDUDRURURDLRULDLULULDLLDLDLDLLLUDUDDLRLRRDULLUDRDDLLLDUURDULUDURLLLDRUDDDLRLULDLDRRDDDRDULDDUDRDDULLULRRLRUULRDUDURUDULUDUDURLDRDUUDDRRLRURDRRLRDDDDRUDLUDLDDLRDLUUDLRRURDDLURDLRDLLRDRDLDLDUUUURULUULDDDDLDULUURRRULUDLLLDRULDRURL'
+
+const code3 = 'RRRLRDLLDUURDRRRLURDUULUDURDRRUUDURURRLDLLDRDLRRURDDUDDURLRUUDDULULRUUDRLUUDDLLDDDLRRRDLLLLLLRRURDULDLURRURRDDLDDDUDURRDURRRLUDRRULLRULDRLULRULDDRLLRDLRDUURULURLUURLRRULDULULUULDUDLRLDRDDRRRUUULULDUURLRLLURRLURDUUDDDRUULDLLLDRUURLRRLLDDUDRDLDDDULDRDDDUDRRLLLULURDUDLLUUURRLDULURURDDLUDLLRLDRULULURDLDRLURDLRRDRRUULLULDLURRDDUDRDDDLDUDLDRRUDRULDLDULRLLRRRRDDRLUURRRRDDLLRUURRLRURULDDULRLULRURRUULDUUDURDRRLRLUDRULDRUULUUDRDURDURRLULDDDULDDLRDURRUUUUUDDRRDLRDULUUDDL'
+
+const code4 = 'DRRLLRRLULDDULRDDLRLDRURDDUDULURRDLUUULURRRLLRLULURLLRLLDLLUDDLLRDRURRDLDDURRURDRDDUDDDLLRLDLDLDDDDRRRRUDUDLRDUDDURLLRURRDUDLRLLUDDRLDUUDDLLLUDRRRLLDDULUDDRLLUDDULLDDLRLDLRURRLUDDLULULDLUURDLLUDUDRRRRDULUDLRRLRUDDUUDRRLLRUUDRRLDDLRRRUDRRDRRDDUDLULLURRUURLLLDRDDLUDDDUDDRURURDLRUULLRDRUUDRDUDRLULLDURUUULDDLDRDRUDRUDUULDDRLRDRRDRRRRLRLRUULDDUUDDLLLLRRRDUDLRDLDUDDUURLUDURLDRRRDRUDUDRLDLRLDRDDLUDRURLRDRDLDUDDDLRLULLUULURLDDDULDUDDDLDRLDLURULLUDLLDRULDLLLDUL'
+
+const code5 = 'LDULURUULLUDLDDRLLDURRULRLURLLURLRRLRDLDDRUURULLRUURUURRUDDDLRRLDDLULDURLLRDURDLLLURLDRULLURLRLDRDRULURDULDLLDUULLLDUDULDURLUDRULRUUUUUUDUUDDDLLURDLDLRLRDLULRDRULUUDRLULLURLRLDURDRRDUDDDURLLUUDRRURUDLDUDRLRLDRLLLLDLLLURRUDDURLDDRULLRRRRDUULDLUDLDRDUUURLDLLLDLRLRRLDDULLRURRRULDLURLURRRRULUURLLUULRURDURURLRRDULLDULLUDURDUDRLUULULDRRDLLDRDRRULLLDDDRDUDLRDLRDDURRLDUDLLRUDRRRUDRURURRRRDRDDRULRRLLDDRRRLDLULRLRRRUDUDULRDLUDRULRRRRLUULRULRLLRLLURDLUURDULRLDLRLURDUURUULUUDRLLUDRULULULLLLRLDLLLDDDLUULUDLLLDDULRDRULURDLLRRDRLUDRD'
+
+let startKey = '5'
+
+const key1 = calcKey(code1.split(''))
+const key2 = calcKey(code2.split(''))
+const key3 = calcKey(code3.split(''))
+const key4 = calcKey(code4.split(''))
+const key5 = calcKey(code5.split(''))
+
+console.log('Keycode is: ', key1, key2, key3, key4, key5)
+
+function calcKey(arr) {
+	return arr.reduce((prev, next) => {
+		return nextKey(prev, next)
+	}, startKey)
+}
+
+function nextKey(pos, direction) {
+	switch (pos) {
+		case '1':
+			switch (direction) {
+				case 'L':
+				case 'U':
+				case 'R':
+					return '1'
+				case 'D':
+					return '3'
+			}
+		case '2':
+			switch (direction) {
+				case 'L':
+				case 'U':
+					return '2'
+				case 'R':
+					return '3'
+				case 'D':
+					return '6'
+			}
+		case '3':
+			switch (direction) {
+				case 'L':
+					return '2'
+				case 'U':
+					return '1'
+				case 'R':
+					return '4'
+				case 'D':
+					return '7'
+			}
+		case '4':
+			switch (direction) {
+				case 'L':
+					return '3'
+				case 'U':
+				case 'R':
+					return '4'
+				case 'D':
+					return '8'
+			}
+		case '5':
+			switch (direction) {
+				case 'L':
+				case 'U':
+				case 'D':
+					return '5'
+				case 'R':
+					return '6'
+			}
+		case '6':
+			switch (direction) {
+				case 'L':
+					return '5'
+				case 'U':
+					return '2'
+				case 'R':
+					return '7'
+				case 'D':
+					return 'A'
+			}
+		case '7':
+			switch (direction) {
+				case 'L':
+					return '6'
+				case 'U':
+					return '3'
+				case 'R':
+					return '8'
+				case 'D':
+					return 'B'
+			}
+		case '8':
+			switch (direction) {
+				case 'L':
+					return '7'
+				case 'U':
+					return '4'
+				case 'R':
+					return '9'
+				case 'D':
+					return 'C'
+			}
+		case '9':
+			switch (direction) {
+				case 'L':
+					return '8'
+				case 'U':
+				case 'R':
+				case 'D':
+					return '9'
+			}
+		case 'A':
+			switch (direction) {
+				case 'L':
+				case 'D':
+					return 'A'
+				case 'U':
+					return '6'
+				case 'R':
+					return 'B'
+			}
+		case 'B':
+			switch (direction) {
+				case 'L':
+					return 'A'
+				case 'U':
+					return '7'
+				case 'R':
+					return 'C'
+				case 'D':
+					return 'D'
+			}
+		case 'C':
+			switch (direction) {
+				case 'L':
+					return 'B'
+				case 'U':
+					return '8'
+				case 'R':
+				case 'D':
+					return 'C'
+			}
+		case 'D':
+			switch (direction) {
+				case 'L':
+				case 'R':
+				case 'D':
+					return 'D'
+				case 'U':
+					return 'B'
+			}
+	}
+}
